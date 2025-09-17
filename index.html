@@ -1,0 +1,81 @@
+<div style="text-align:center; margin:1em 0;">
+  <img src="images/logo.png" alt="谁怜残月" 
+       style="max-width:250px; height:auto;">
+</div>
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8">
+  <title>谁怜残月</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="styles.css">
+  <!-- 引入日式明朝体（Noto Serif JP） -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="site-header">
+    <h1>誰怜殘月</h1>
+    <p class="notice">🌙 黑死牟/继国严胜（继国岩胜）& 雪待怜</p>
+  </header>
+
+  <nav class="filters">
+    <input id="search" placeholder="🔍 搜索标题或标签…" oninput="filterStories()">
+    <select id="category" onchange="filterStories()">
+      <option value="">📚 全部分类</option>
+      <option value="战国">战国</option>
+      <option value="大正">大正</option>
+      <option value="现代">现代</option>
+    </select>
+  </nav>
+
+  <main>
+    <section id="story-list">
+      <article class="story" data-tags="战国">
+        <h2><a href="story/zhanguo/fushiyue.html">浮世月</a></h2>
+        <p class="meta">作者：澜听 · 分类：战国 · 字数：3,618</p>
+        <p class="excerpt">一个嫉妒的哥哥。<br />
+一个不守诺的男人。<br />
+一个抛妻弃子的丈夫。
+
+<p>——答应过她的事也会忘记，她的丈夫就是这样一个人。</p>
+      </article>
+
+      <article class="story" data-tags="战国">
+        <h2><a href="story/zhanguo/yuelongye.html">月胧夜</a></h2>
+        <p class="meta">作者：澜听 · 分类：战国 · 字数：3,117</p>
+        <p class="excerpt">我的丈夫无疑是个很好的丈夫。<br />
+雪待怜这么想着，然而心里却有种怪异的感觉。
+<p>又来了，这种荒谬、与认知相悖的感觉，让她情不自禁地想呕吐。<br />
+然而在过程中又像被一团头发堵住了嗓子口，不上不下的恶心感只令她更加难受。</p>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 誰怜殘月 · 黑死牟同人存档</p>
+  </footer>
+
+<script>
+function filterStories(){
+  const q = document.getElementById('search').value.trim().toLowerCase();
+  const c = document.getElementById('category').value;
+
+  document.querySelectorAll('.story').forEach(article=>{
+    // 标题、作者、简介、分类 + 标签都加入搜索范围
+    const title = article.querySelector('h2').innerText.toLowerCase();
+    const meta  = article.querySelector('.meta').innerText.toLowerCase();
+    const excerpt = article.querySelector('.excerpt').innerText.toLowerCase();
+    const tags  = article.dataset.tags.toLowerCase();
+
+    const text = [title, meta, excerpt, tags].join(' ');
+    const matchText = !q || text.includes(q);
+    const matchCat = !c || tags.includes(c);
+
+    article.style.display = (matchText && matchCat) ? '' : 'none';
+  });
+}
+</script>
+</body>
+</html>
+
+

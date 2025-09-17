@@ -1,0 +1,125 @@
+/* 引入日式明朝体 */
+body {
+  font-family: "Noto Serif JP", "Songti SC", serif;
+  line-height: 1.9;
+  color: #2b2b2b;
+  margin: 0;
+  background: #faf8f5 url('https://www.transparenttextures.com/patterns/paper-fibers.png');
+}
+
+/* 链接 */
+a { color: #8b0000; text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* 顶部 */
+.site-header {
+  background: linear-gradient(135deg, #5b0f0f, #2f1b1b);
+  color: #fdfdfd;
+  padding: 25px;
+  text-align: center;
+  border-bottom: 5px solid #b48a78;
+}
+.site-header h1 {
+  margin: 0;
+  font-size: 32px;
+  letter-spacing: 4px;
+}
+.notice {
+  font-size: 13px;
+  opacity: .9;
+  margin-top: 6px;
+  font-style: italic;
+}
+
+/* 筛选栏 */
+.filters {
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  padding: 12px;
+  border-bottom: 2px solid #e5d3c6;
+}
+.filters input,
+.filters select {
+  padding: 8px 12px;
+  border: 1px solid #b48a78;
+  border-radius: 6px;
+  font-size: 14px;
+  font-family: inherit;
+  background: #fffaf7;
+}
+
+/* 首页作品 */
+main { max-width: 900px; margin: 25px auto; padding: 0 15px; }
+.story {
+  background: #fffdf9;
+  padding: 18px;
+  margin-bottom: 18px;
+  border-radius: 12px;
+  border: 1px solid #e5d3c6;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  transition: transform 0.2s;
+}
+.story:hover { transform: translateY(-3px); }
+.story h2 {
+  margin-top: 0;
+  font-size: 20px;
+  color: #5b0f0f;
+}
+.meta {
+  color: #7a5c51;
+  font-size: 13px;
+}
+.excerpt {
+  margin-top: 8px;
+  color: #3c3c3c;
+}
+
+/* 正文 */
+.story-body {
+  max-width: 750px;
+  margin: 25px auto;
+  background: #fffdf9;
+  padding: 22px;
+  border-radius: 12px;
+  border: 1px solid #e5d3c6;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+.story-body h2 {
+  border-bottom: 1px solid #e5d3c6;
+  padding-bottom: 6px;
+  margin-top: 0;
+  color: #5b0f0f;
+}
+.chapter-nav {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+.chapter-nav a {
+  background: #5b0f0f;
+  color: #fff;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size: 14px;
+}
+.chapter-nav a:hover {
+  background: #3d0c0c;
+}
+.back-link {
+  display: inline-block;
+  margin-top: 8px;
+  font-size: 14px;
+  color: #ddd;
+}
+
+/* 底部 */
+footer {
+  text-align: center;
+  padding: 18px;
+  color: #7a5c51;
+  font-size: 13px;
+  border-top: 2px solid #e5d3c6;
+}
+
