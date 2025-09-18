@@ -131,3 +131,63 @@ footer {
   border-top: 2px solid #e5d3c6;
 }
 
+/* 时间线 */
+.timeline {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 0 15px;
+}
+.timeline h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 22px;
+  color: #5b0f0f;
+  border-bottom: 2px solid #e5d3c6;
+  display: inline-block;
+  padding-bottom: 6px;
+}
+.timeline ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  position: relative;
+}
+.timeline ul::before {
+  content: '';
+  position: absolute;
+  left: 20px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: #b48a78;
+}
+.timeline li {
+  margin-bottom: 25px;
+  padding-left: 50px;
+  position: relative;
+}
+.timeline li::before {
+  content: '';
+  position: absolute;
+  left: 12px;
+  top: 5px;
+  width: 16px;
+  height: 16px;
+  background: #fff;
+  border: 2px solid #5b0f0f;
+  border-radius: 50%;
+}
+.timeline .time {
+  font-weight: bold;
+  color: #5b0f0f;
+  margin-bottom: 4px;
+}
+.timeline .event {
+  color: #3c3c3c;
+  background: #fffdf9;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid #e5d3c6;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
