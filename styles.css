@@ -260,3 +260,42 @@ footer {
   border-radius: 6px;
 }
 
+.oc-profile {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;           /* 图片和文字之间的间距 */
+  margin: 2rem 0;
+}
+
+/* 图片区域 */
+.oc-profile .oc-image img {
+  max-width: 250px;    /* 限制最大宽度，避免撑太大 */
+  height: auto;
+  border-radius: 8px;  /* 圆角，可选 */
+}
+
+/* 文字区域 */
+.oc-profile .oc-info {
+  flex: 1;             /* 占满剩余空间 */
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* 手机端（屏幕小于768px时）自动改为竖排 */
+@media (max-width: 768px) {
+  .oc-profile {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .oc-profile .oc-image img {
+    max-width: 80%;   /* 在手机上图片占屏幕 80% */
+  }
+
+  .oc-profile .oc-info {
+    text-align: left; /* 如果你希望文字保持左对齐，就改成 left */
+    margin-top: 1rem;
+  }
+}
+
