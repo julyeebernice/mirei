@@ -20,16 +20,17 @@
 
   <nav class="filters">
     <input id="search" placeholder="🔍 搜索标题或标签…" oninput="filterStories()">
-    <select id="category" onchange="filterStories()">
-      <option value="">📚 全部分类</option>
-      <option value="战国">战国</option>
-      <option value="大正">大正</option>
-      <option value="现代">现代</option>
-    </select>
+<select id="category" onchange="filterStories()">
+  <option value="">📚 全部分类</option>
+  <option value="简介">简介</option> <!-- 新增 -->
+  <option value="战国">战国</option>
+  <option value="大正">大正</option>
+  <option value="现代">现代</option>
+</select>
   </nav>
 
   <main>
-<section class="timeline">
+<section class="timeline" data-tags="简介">
   <h2>剧情时间线</h2>
   <ul>
     <li>
@@ -43,6 +44,27 @@
       <div class="time">现代</div>
     </li>
   </ul>
+</section>
+
+<section class="oc-profile" data-tags="简介">
+  <div class="oc-image">
+    <img src="images/rei.png" alt="雪待怜 立绘">
+  </div>
+  <div class="oc-info">
+    <h2>雪待 怜</h2>
+    <p class="subtitle">ゆきまち（Yukimachi） れい（Rei）</p>
+    <ul>
+      <li><strong>身份：</strong>继国严胜之妻</li>
+      <li><strong>出身：</strong>地方有名的公家旁系</li>
+      <li><strong>性格：</strong>温婉内敛，坚韧细腻，善于察言观色</li>
+      <li><strong>与黑死牟的关系：</strong>初时对继国严胜只是出于女子的贤淑与婚姻责任，安静地陪伴在他身边，随着相处却逐渐对他产生了温柔而隐忍的爱意。</li>
+    </ul>
+    <p class="desc">
+      雪待てば 影もやさしく<br />
+灯に落ちぬ 君を待つ身の<br />
+夜は長けれど
+    </p>
+  </div>
 </section>
 
     <section id="story-list">
@@ -83,16 +105,13 @@ function filterStories(){
   const q = document.getElementById('search').value.trim().toLowerCase();
   const c = document.getElementById('category').value;
 
-  document.querySelectorAll('.story').forEach(article=>{
-    // 标题、作者、简介、分类 + 标签都加入搜索范围
-    const title = article.querySelector('h2').innerText.toLowerCase();
-    const meta  = article.querySelector('.meta').innerText.toLowerCase();
-    const excerpt = article.querySelector('.excerpt').innerText.toLowerCase();
-    const tags  = article.dataset.tags.toLowerCase();
+  // 不只是 story，顺便包含 timeline 和 oc-profile
+  document.querySelectorAll('.story, .timeline, .oc-profile').forEach(article=>{
+    const tags  = article.dataset.tags ? article.dataset.tags.toLowerCase() : "";
+    const text  = article.innerText.toLowerCase();
 
-    const text = [title, meta, excerpt, tags].join(' ');
     const matchText = !q || text.includes(q);
-    const matchCat = !c || tags.includes(c);
+    const matchCat  = !c || tags.includes(c);
 
     article.style.display = (matchText && matchCat) ? '' : 'none';
   });
