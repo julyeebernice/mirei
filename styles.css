@@ -221,8 +221,14 @@ footer {
   box-shadow: 0 4px 10px rgba(0,0,0,0.08);
 }
 
+.oc-image {
+  flex: 0 0 240px;   /* 固定图片容器大小，防止超大 */
+}
+
 .oc-image img {
-  max-width: 260px;
+  width: 100%;       /* 图片不会超出容器 */
+  height: auto;
+  max-width: 240px;  /* 限制最大宽度 */
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.15);
 }
@@ -244,6 +250,7 @@ footer {
   padding: 0;
   margin: 0 0 15px;
 }
+
 .oc-info li {
   margin-bottom: 6px;
   color: #3c3c3c;
@@ -260,4 +267,22 @@ footer {
   border-radius: 6px;
 }
 
+/* -------- 响应式处理：小屏幕改为竖排 -------- */
+@media (max-width: 768px) {
+  .oc-profile {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .oc-image {
+    flex: none;
+    max-width: 70%; /* 手机上自动缩小 */
+  }
+
+  .oc-info {
+    text-align: left;
+    margin-top: 20px;
+  }
+}
 
