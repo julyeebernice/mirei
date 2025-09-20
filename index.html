@@ -22,7 +22,8 @@
     <input id="search" placeholder="🔍 搜索标题或标签…" oninput="filterStories()">
 <select id="category" onchange="filterStories()">
   <option value="">📚 全部分类</option>
-  <option value="简介">简介</option> <!-- 新增 -->
+  <option value="简介">简介</option>
+  <option value="剧情">剧情</option>
   <option value="战国">战国</option>
   <option value="大正">大正</option>
   <option value="现代">现代</option>
@@ -30,21 +31,48 @@
   </nav>
 
   <main>
-<section class="timeline" data-tags="简介">
-  <h2>剧情时间线</h2>
-  <ul>
-    <li>
-      <div class="time">战国时期</div>
-      <div class="event">哀月歌、浮世月、月胧夜</div>
-    </li>
-    <li>
-      <div class="time">大正时期</div>
-    </li>
-    <li>
-      <div class="time">现代</div>
-    </li>
-  </ul>
-</section>
+<main>
+  <section class="timeline" data-tags="剧情">
+    <h2>剧情时间线</h2>
+    <ul>
+      <li>
+        <div class="time">战国时期</div>
+        <div class="event">哀月歌、浮世月、月胧夜</div>
+      </li>
+      <li>
+        <div class="time">大正时期</div>
+      </li>
+      <li>
+        <div class="time">现代</div>
+      </li>
+    </ul>
+  </section>
+
+  <section class="story-arc" data-tags="剧情">
+    <h2>战国主线</h2>
+    <div class="arc-step">
+      <h3>【哀月歌】 <span>（鬼化前 · 人类时期）</span></h3>
+      <p>雪待怜怀孕，夜里等丈夫归来 → 严胜与鬼交手受伤归家</p>
+      <p>他因缘一而嫉妒、自卑，无法斩杀鬼 → 压抑执念</p>
+      <p>给孩子取名「时透」，表面意为清明透彻，实则因缘一的通透世界而取。</p>
+    </div>
+
+    <div class="arc-arrow">↓</div>
+
+    <div class="arc-step">
+      <h3>【浮世月】 <span>（鬼化初期 · 人鬼撕裂）</span></h3>
+      <p>严胜堕鬼，回到雪待怜身边 → 鬼性与残留人性交错</p>
+      <p>雪待怜厌恶丈夫的背叛：弃妻逐鬼杀队 → 再弃鬼杀队堕鬼。</p>
+    </div>
+
+    <div class="arc-arrow">↓</div>
+
+    <div class="arc-step">
+      <h3>【月胧夜】 <span>（鬼化后长期 · 精神错乱）</span></h3>
+      <p>雪待怜失去部分记忆，认知扭曲，明明称丈夫「好丈夫」却感到恶心。</p>
+      <p>夫妻关系沦为畸形共存。</p>
+    </div>
+  </section>
 
 <section class="oc-profile" data-tags="简介">
   <div class="oc-image">
@@ -105,11 +133,14 @@ function filterStories(){
   const q = document.getElementById('search').value.trim().toLowerCase();
   const c = document.getElementById('category').value;
 
-  // 不只是 story，顺便包含 timeline 和 oc-profile
-  document.querySelectorAll('.story, .timeline, .oc-profile').forEach(article=>{
-    const tags  = article.dataset.tags ? article.dataset.tags.toLowerCase() : "";
-    const text  = article.innerText.toLowerCase();
+  // 文章（.story）+ 分类模块（section[data-tags]）都纳入筛选
+  document.querySelectorAll('.story, section[data-tags]').forEach(article=>{
+    const title   = article.querySelector('h2')?.innerText.toLowerCase() || "";
+    const meta    = article.querySelector('.meta')?.innerText.toLowerCase() || "";
+    const excerpt = article.querySelector('.excerpt')?.innerText.toLowerCase() || "";
+    const tags    = (article.dataset.tags || "").toLowerCase();
 
+    const text = [title, meta, excerpt, tags].join(' ');
     const matchText = !q || text.includes(q);
     const matchCat  = !c || tags.includes(c);
 
@@ -117,6 +148,7 @@ function filterStories(){
   });
 }
 </script>
+
 </body>
 </html>
 
